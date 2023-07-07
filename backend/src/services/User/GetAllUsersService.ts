@@ -1,5 +1,5 @@
+import { User } from "@entities/User";
 import { FindManyOptions, getRepository, ILike } from "typeorm";
-import { User } from "../../entities/User";
 
 export class GetAllUsersService {
   async execute(

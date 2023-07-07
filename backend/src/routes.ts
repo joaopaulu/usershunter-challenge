@@ -1,10 +1,10 @@
+import { CreateUserController } from "@controllers/User/CreateUserController";
+import { DeleteUserController } from "@controllers/User/DeleteUserController";
+import { GetAllUsersController } from "@controllers/User/GetAllUserController";
+import { GetOneUsersController } from "@controllers/User/GetOneUserController";
+import { UpdateUserController } from "@controllers/User/UpdateUserController";
+import { obterLista } from "@controllers/listaController";
 import { Router } from "express";
-import { CreateUserController } from "./controller/User/CreateUserController";
-import { DeleteUserController } from "./controller/User/DeleteUserController";
-import { GetAllUsersController } from "./controller/User/GetAllUserController";
-import { GetOneUsersController } from "./controller/User/GetOneUserController";
-import { UpdateUserController } from "./controller/User/UpdateUserController";
-import { obterLista } from "./controller/listaController";
 
 const routes = Router();
 

@@ -1,5 +1,5 @@
+import { CreateUserService } from "@services/User/CreateUserService";
 import { Request, Response } from "express";
-import { CreateUserService } from "../../services/User/CreateUserService";
 
 export class CreateUserController {
   async handle(request: Request, response: Response) {
@@ -36,4 +36,3 @@ export class CreateUserController {
     return response.json(result);
   }
 }
-

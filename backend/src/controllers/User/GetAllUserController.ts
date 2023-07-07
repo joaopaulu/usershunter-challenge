@@ -1,6 +1,6 @@
+import { User } from "@entities/User";
+import { GetAllUsersService } from "@services/User/GetAllUsersService";
 import { Request, Response } from "express";
-import { User } from "../../entities/User";
-import { GetAllUsersService } from "../../services/User/GetAllUsersService";
 
 export class GetAllUsersController {
   async handle(request: Request, response: Response) {

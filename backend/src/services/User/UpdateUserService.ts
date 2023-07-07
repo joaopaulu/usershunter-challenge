@@ -1,6 +1,6 @@
+import { User } from "@entities/User";
 import { getRepository } from "typeorm";
-import { User } from "../../entities/User";
-import { UserUpdateRequest } from "../../types/user";
+import { UserUpdateRequest } from "types/user";
 
 export class UpdateUserService {
   async execute({

@@ -1,5 +1,5 @@
+import { User } from "@entities/User";
 import { getRepository } from "typeorm";
-import { User } from "../../entities/User";
 
 export class GetOneUsersService {
   async execute(id: string) {

@@ -1,5 +1,5 @@
+import { obterDadosExternos } from "@services/apiService";
 import { Request, Response } from "express";
-import { obterDadosExternos } from "../services/apiService";
 
 export async function obterLista(req: Request, res: Response): Promise<void> {
   try {

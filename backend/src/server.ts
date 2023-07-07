@@ -1,4 +1,6 @@
 import express from "express";
+import "module-alias";
+import "module-alias/register";
 import "reflect-metadata";
 
 import "./database";
