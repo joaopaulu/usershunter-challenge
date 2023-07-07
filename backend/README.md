@@ -1,29 +1,28 @@
 # Users API
 
-API feita em um vídeo postado no meu canal no YouTube. Para acessá-lo, [clique aqui](https://youtu.be/gU3kp7Aw0JI).
+API feita NODE, consumindo a API RandomUsers
 
 ## Tecnologias utilizadas
 
 - Node.js
 - TypeScript
 - Express
-- MongoDB
-
-## Conceitos utilizados
-
-- SOLID
-- Injeção de Dependência (Dependency Injection)
-- Repository Pattern
+- TypeORM
+- Postgres
 
 ## Entidades
 
 <pre>
 User {
   id: string;
-  firstName: string;
-  lastName: string;
+  gender: string;
+  first: string;
+  last: string;
   email: string;
-  password: string;
+  phone: string;
+  picture: string;
+  location: Location;
+
 }</pre>
 
 ## Rotas
@@ -33,6 +32,4 @@ User {
 - PATCH /users/:id - atualiza um usuário
 - DELETE /users/:id - deleta um usuário
 
-## Arquitetura
 
-![Arquitetura](https://imgur.com/k5mXFoZ.png)
