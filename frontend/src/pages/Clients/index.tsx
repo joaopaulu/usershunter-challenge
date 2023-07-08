@@ -10,8 +10,16 @@ import './styles.scss';
 
 const Clients = () => {
   const [clientsData, setClientsData] = useState<ClientsResponse | null>(null);
+  const [selectedClient, setSelectedClient] = useState<Client | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [activePage, setActivePage] = useState(0);
+
+  const handleCardButtonClick = (client: Client) => {
+    setSelectedClient(client);
+    // Faça o que você precisa com as informações do cliente
+    // Por exemplo, atualizar o estado no componente `Clients`
+    console.log('Informações do cliente:', client);
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -46,7 +54,11 @@ const Clients = () => {
               <ClientCardLoader />
             ) : (
               clientsData?.results.map((client: Client) => (
-                <ClientCard client={client} key={client.email} />
+                <ClientCard
+                  client={client}
+                  key={client.email}
+                  onCardButtonClick={handleCardButtonClick}
+                />
               ))
             )}
           </div>
@@ -59,7 +71,7 @@ const Clients = () => {
         </div>
         <hr />
         <div className="half-width">
-          <Form />
+          <Form client={selectedClient} />
         </div>
       </div>
       <Footer />

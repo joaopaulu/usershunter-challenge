@@ -23,6 +23,10 @@ export interface Location {
   city: string;
   state: string;
   country: string;
+  postcode: string;
+  street: {
+    name: string;
+  };
 }
 
 export interface Dob {
