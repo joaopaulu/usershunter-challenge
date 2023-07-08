@@ -1,0 +1,26 @@
+.main-container {
+    display: flex;
+  }
+  
+  .half-width {
+    width: 50%;
+  }
+
+.client-container {
+    margin-top: 26px;
+    max-width: 700px;
+    margin: 0 auto;
+    margin-bottom: 30px;
+    min-height: 740px;
+}
+
+.client-title {
+    font-size: 24px;
+    line-height: 33px;
+    letter-spacing: -0.015em;
+}
+
+.client-products {
+    margin-top: 20px;
+    display: inline-flexbox;
+}
