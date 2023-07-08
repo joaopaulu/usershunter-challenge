@@ -5,6 +5,7 @@ import { GetOneUsersController } from "@controllers/User/GetOneUserController";
 import { UpdateUserController } from "@controllers/User/UpdateUserController";
 import { obterLista } from "@controllers/listaController";
 import { Router } from "express";
+import { configureSwagger } from "./swagger";
 
 const routes = Router();
 
@@ -14,6 +15,8 @@ routes.get("/users/:id", new GetOneUsersController().handle);
 routes.delete("/users/:id", new DeleteUserController().handle);
 routes.put("/users/:id", new UpdateUserController().handle);
 
-routes.get("/lista", obterLista);
+routes.get("/randomusers", obterLista);
+
+configureSwagger(routes);
 
 export { routes };
