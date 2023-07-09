@@ -27,10 +27,12 @@ export interface UserList {
   picture: {
     large: string;
   };
-  street: string;
   location: {
     city: string;
     state: string;
     postcode: string;
+    street: {
+      name: string;
+    };
   };
 }

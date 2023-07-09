@@ -1,7 +1,7 @@
 import { ReactComponent as SearchIcon } from 'core/assets/images/search-icon.svg';
 import { useForm } from 'react-hook-form';
 
-import './styles.css';
+import './styles.scss';
 
 export type UserFilterData = {
   first: string;
@@ -27,9 +27,9 @@ const UserFilter = ({ onSubmitFilter }: Props) => {
   };
 
   return (
-    <div className="base-card servidor-filter-container">
-      <form onSubmit={handleSubmit(onSubmit)} className="servidor-filter-form">
-        <div className="servidor-filter-name-container">
+    <div className="base-card user-filter-container">
+      <form onSubmit={handleSubmit(onSubmit)} className="user-filter-form">
+        <div className="user-filter-name-container">
           <input
             {...register('first')}
             type="text"
@@ -51,14 +51,14 @@ const UserFilter = ({ onSubmitFilter }: Props) => {
             placeholder="Estado"
             name="state"
           />
-          <button className="servidor-filter-search-icon">
+          <button className="user-filter-search-icon">
             <SearchIcon />
           </button>
         </div>
-        <div className="servidor-filter-bottom-container">
+        <div className="user-filter-bottom-container">
           <button
             onClick={handleFormClear}
-            className="btn btn-outline-secondary btn-servidor-filter-clear"
+            className="btn btn-outline-secondary btn-user-filter-clear"
           >
             LIMPAR FILTRO
           </button>

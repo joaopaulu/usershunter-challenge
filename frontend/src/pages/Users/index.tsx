@@ -5,6 +5,7 @@ import { requestBackend } from 'core/utils/request';
 import { UserList } from 'core/utils/types/user';
 import { NodePage } from 'core/utils/types/vendor/node';
 import { useCallback, useEffect, useState } from 'react';
+import UserCardLoader from './components/Loaders/UserCardLoader';
 import UserCard from './components/UserCard';
 import './styles.scss';
 
@@ -13,8 +14,9 @@ type ControlComponentsData = {
   filterData: UserFilterData;
 };
 
-const List = () => {
+const Users = () => {
   const [page, setPage] = useState<NodePage<UserList>>();
+  const [isLoading, setIsLoading] = useState(false);
 
   const [controlComponentsData, setControlComponentsData] =
     useState<ControlComponentsData>({
@@ -45,12 +47,11 @@ const List = () => {
         state: controlComponentsData.filterData.state,
       },
     };
+    setIsLoading(true);
 
-    console.log(getUser);
-
-    requestBackend(config).then(response => {
-      setPage(response.data);
-    });
+    requestBackend(config)
+      .then(response => setPage(response.data))
+      .finally(() => setIsLoading(false));
   }, [controlComponentsData]);
 
   useEffect(() => {
@@ -58,25 +59,29 @@ const List = () => {
   }, [getUser]);
 
   return (
-    <div className="user-crud-container">
-      <div className="user-crud-bar-container">
-        <UserFilter onSubmitFilter={handleSubmitFilter} />
+    <>
+      <div className="user-container">
+        <div className="user-crud-bar-container">
+          <UserFilter onSubmitFilter={handleSubmitFilter} />
+        </div>
+        <div className="row">
+          {isLoading ? (
+            <UserCardLoader />
+          ) : (
+            page?.results.map(user => (
+              <UserCard user={user} key={user.id} onDelete={getUser} />
+            ))
+          )}
+        </div>
+        <PaginationUser
+          forcePage={page?.number}
+          pageCount={page ? page.totalPages : 0}
+          range={6}
+          onChange={handlePageChange}
+        />
       </div>
-      <div className="row">
-        {page?.results.map(user => (
-          <div key={user.id} className="col-sm-6 col-md-12">
-            <UserCard user={user} onDelete={getUser} />
-          </div>
-        ))}
-      </div>
-      <PaginationUser
-        forcePage={page?.number}
-        pageCount={page ? page.totalPages : 0}
-        range={6}
-        onChange={handlePageChange}
-      />
-    </div>
+    </>
   );
 };
 
-export default List;
+export default Users;

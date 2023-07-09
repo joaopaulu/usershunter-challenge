@@ -2,6 +2,7 @@ import { AxiosRequestConfig } from 'axios';
 import { requestBackend } from 'core/utils/request';
 import { UserList } from 'core/utils/types/user';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import './styles.scss';
 
 type UserCardProps = {
@@ -19,13 +20,19 @@ const UserCard = ({ user, onDelete }: UserCardProps) => {
       url: `/users/${userId}`,
       withCredentials: true,
     };
-    requestBackend(config).then(() => {
-      onDelete();
-    });
+
+    requestBackend(config)
+      .then(() => {
+        onDelete();
+        toast.warning('Usuário removido com sucesso');
+      })
+      .catch(() => {
+        toast.error('Erro ao excluir usuário');
+      });
   };
 
   return (
-    <div className="row card-base border-radius-10 user-card">
+    <div className="row card-base border-radius-10 user-card ">
       <div className="col-2 image-info">
         <img
           src={user.picture.large}
@@ -33,24 +40,33 @@ const UserCard = ({ user, onDelete }: UserCardProps) => {
           className="user-card-image"
         />
       </div>
-      <div className="col-7 user-info">
+      <div className="col-5 user-info">
         <h6 className="user-name">
           {user.name.first} {user.name.last}
         </h6>
         <h6 className="user-infos">Email: {user.email} </h6>
+        <h6 className="user-infos">Estado: {user.location.state} </h6>
       </div>
-      <div className="crud-card-buttons-container">
-        <button
-          onClick={() => handleDelete(user.id)}
-          className="btn btn-outline-danger crud-card-button crud-card-button-first"
-        >
-          EXCLUIR
-        </button>
-        <Link to={`/admin/servidor/${user.id}`}>
-          <button className="btn btn-outline-secondary crud-card-button">
-            EDITAR
+      <div className="col-3">
+        <div className="crud-card-buttons-container">
+          <Link to={`/users/details/${user.id}`} key={user.id}>
+            <button className="btn btn-outline-primary crud-card-button">
+              DETALHAR
+            </button>
+          </Link>
+
+          <Link to={`/users/${user.id}`}>
+            <button className="btn btn-outline-secondary crud-card-button">
+              EDITAR
+            </button>
+          </Link>
+          <button
+            onClick={() => handleDelete(user.id)}
+            className="btn btn-outline-danger crud-card-button crud-card-button-first"
+          >
+            EXCLUIR
           </button>
-        </Link>
+        </div>
       </div>
     </div>
   );
