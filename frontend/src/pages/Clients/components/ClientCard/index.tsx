@@ -1,4 +1,4 @@
-import { Client } from 'core/utils/types/Client';
+import { Client } from 'core/utils/types/client';
 import './styles.scss';
 
 type ClientCardProps = {

@@ -1,7 +1,7 @@
 import Footer from 'core/components/Footer';
 import Pagination from 'core/components/Pagination';
 import makeRequest from 'core/utils/request';
-import { Client, ClientsResponse } from 'core/utils/types/Client';
+import { Client, ClientsResponse } from 'core/utils/types/client';
 import { useEffect, useState } from 'react';
 import ClientCard from './components/ClientCard';
 import Form from './components/Form';

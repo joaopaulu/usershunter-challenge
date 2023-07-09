@@ -19,7 +19,7 @@ const PageHeader = () => {
           </li>
           <li>
             <NavLink
-              to="test"
+              to="/users"
               className={({ isActive }) => (isActive ? 'active' : '')}
             >
               Minha Lista

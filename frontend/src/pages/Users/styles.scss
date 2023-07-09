@@ -1,0 +1,29 @@
+.main-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 84vh;
+  }
+  
+  .half-width {
+    width: 50%;
+  }
+
+.client-container {
+    margin-top: 26px;
+    max-width: 700px;
+    margin: 0 auto;
+    margin-bottom: 30px;
+    min-height: 580px;
+}
+
+.client-title {
+    font-size: 24px;
+    line-height: 33px;
+    letter-spacing: -0.015em;
+}
+
+.client-body {
+    margin-top: 15px;
+    display: inline-flexbox;
+}

@@ -1,4 +1,4 @@
-import axios, { Method } from 'axios';
+import axios, { AxiosResponse, Method, RawAxiosRequestConfig } from 'axios';
 
 type RequestParams = {
   method?: Method;
@@ -16,6 +16,23 @@ const makeRequest = ({ method = 'GET', url, data, params }: RequestParams) => {
     data,
     params,
   });
+};
+
+export const requestBackend = (config: RawAxiosRequestConfig) => {
+  const headers = config.withCredentials
+    ? {
+        ...config.headers,
+      }
+    : config.headers;
+
+  return axios({ ...config, baseURL: BASE_URL, headers })
+    .then((response: AxiosResponse) => ({
+      data: response.data,
+      headers: response.headers,
+    }))
+    .catch(error => {
+      throw error;
+    });
 };
 
 export const makeRequestPost = ({

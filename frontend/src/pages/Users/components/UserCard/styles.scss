@@ -1,0 +1,38 @@
+.user-card {
+    padding: 10px;
+    text-align: left;
+    margin-bottom: 15px;
+}
+
+.user-info {
+    text-align: left;
+
+    button{
+        margin-top: 8px;
+    }
+}
+
+.user-name {
+    font-size: 22px;
+    line-height: 25px;
+    letter-spacing: -0.015em;
+    color: #263238;
+}
+
+.user-infos {
+    font-size: 16px;
+    line-height: 25px;
+    letter-spacing: -0.015em;
+    color: #747b87;
+    font-weight: 400;
+}
+
+.user-card-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.image-info {
+    margin-right: 20px;
+}

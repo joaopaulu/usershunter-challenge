@@ -2,34 +2,32 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 
 import { makeRequestPost } from 'core/utils/request';
-import { Client } from 'core/utils/types/client';
 import { User } from 'core/utils/types/user';
 import './styles.scss';
 
 type FormProps = {
-  client: Client | null;
-  isFormEnabled: boolean;
+  user: User | null;
 };
 
-const Form: React.FC<FormProps> = ({ client, isFormEnabled }) => {
+const Form: React.FC<FormProps> = ({ user }) => {
   const { register, handleSubmit } = useForm<User>();
 
   const onSubmit: SubmitHandler<User> = async data => {
     const requestData: User = {
-      first: client?.name.first || '',
-      last: client?.name.last || '',
-      email: client?.email || '',
-      phone: client?.phone || '',
-      picture: client?.picture.large || '',
-      street: client?.location.street.name || '',
-      city: client?.location.city || '',
-      state: client?.location.state || '',
-      postcode: client?.location.postcode || '',
+      first: user?.first || '',
+      last: user?.last || '',
+      email: user?.email || '',
+      phone: user?.phone || '',
+      picture: user?.picture || '',
+      street: user?.street || '',
+      city: user?.city || '',
+      state: user?.state || '',
+      postcode: user?.postcode || '',
     };
 
     try {
       await makeRequestPost({
-        url: '/users',
+        url: '/users/:id',
         data: requestData,
       });
       toast.info('Usuário cadastrado com sucesso');
@@ -52,8 +50,7 @@ const Form: React.FC<FormProps> = ({ client, isFormEnabled }) => {
                 className="form-control base-input"
                 placeholder="Nome"
                 name="first"
-                defaultValue={client?.name.first}
-                disabled={!isFormEnabled}
+                defaultValue={user?.first}
               />
             </div>
           </div>
@@ -65,8 +62,7 @@ const Form: React.FC<FormProps> = ({ client, isFormEnabled }) => {
                 className="form-control base-input"
                 placeholder="Sobrenome"
                 name="last"
-                defaultValue={client?.name.last}
-                disabled={!isFormEnabled}
+                defaultValue={user?.last}
               />
             </div>
           </div>
@@ -78,8 +74,7 @@ const Form: React.FC<FormProps> = ({ client, isFormEnabled }) => {
                 className="form-control base-input"
                 placeholder="E-mail"
                 name="email"
-                defaultValue={client?.email}
-                disabled={!isFormEnabled}
+                defaultValue={user?.email}
               />
             </div>
           </div>
@@ -91,8 +86,7 @@ const Form: React.FC<FormProps> = ({ client, isFormEnabled }) => {
                 className="form-control base-input"
                 placeholder="Telefone"
                 name="phone"
-                defaultValue={client?.phone}
-                disabled={!isFormEnabled}
+                defaultValue={user?.phone}
               />
             </div>
           </div>
@@ -104,8 +98,7 @@ const Form: React.FC<FormProps> = ({ client, isFormEnabled }) => {
                 className="form-control base-input"
                 placeholder="URL da Foto"
                 name="picture"
-                defaultValue={client?.picture.large}
-                disabled={!isFormEnabled}
+                defaultValue={user?.picture}
               />
             </div>
           </div>
@@ -117,8 +110,7 @@ const Form: React.FC<FormProps> = ({ client, isFormEnabled }) => {
                 className="form-control base-input"
                 placeholder="CEP"
                 name="postcode"
-                defaultValue={client?.location.postcode}
-                disabled={!isFormEnabled}
+                defaultValue={user?.postcode}
               />
             </div>
           </div>
@@ -130,8 +122,7 @@ const Form: React.FC<FormProps> = ({ client, isFormEnabled }) => {
                 className="form-control base-input"
                 placeholder="Cidade"
                 name="city"
-                defaultValue={client?.location.city}
-                disabled={!isFormEnabled}
+                defaultValue={user?.city}
               />
             </div>
           </div>
@@ -143,8 +134,7 @@ const Form: React.FC<FormProps> = ({ client, isFormEnabled }) => {
                 className="form-control base-input"
                 placeholder="Estado"
                 name="state"
-                defaultValue={client?.location.state}
-                disabled={!isFormEnabled}
+                defaultValue={user?.state}
               />
             </div>
           </div>
@@ -156,17 +146,13 @@ const Form: React.FC<FormProps> = ({ client, isFormEnabled }) => {
                 className="form-control base-input"
                 placeholder="Rua"
                 name="street"
-                defaultValue={client?.location.street.name}
-                disabled={!isFormEnabled}
+                defaultValue={user?.street}
               />
             </div>
           </div>
 
           <div className="user-crud-buttons-container">
-            <button
-              className="btn btn-primary user-crud-button text-white"
-              disabled={!isFormEnabled}
-            >
+            <button className="btn btn-primary user-crud-button text-white">
               SALVAR
             </button>
           </div>
