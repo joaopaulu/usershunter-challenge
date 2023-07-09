@@ -31,7 +31,7 @@ export class User {
   state: string;
 
   @Column()
-  postcode: number;
+  postcode: string;
 
   constructor() {
     if (!this.id) {

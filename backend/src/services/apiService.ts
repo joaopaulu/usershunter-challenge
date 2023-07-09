@@ -1,7 +1,6 @@
 import axios from "axios";
 
-const API_URL =
-  "https://randomuser.me/api/?inc=name,phone,email,location,picture&results=10";
+const API_URL = "https://randomuser.me/api/?results=3";
 
 export async function obterDadosExternos(): Promise<any[]> {
   try {

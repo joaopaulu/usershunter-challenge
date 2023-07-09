@@ -22,6 +22,7 @@ export class GetAllUsersController {
     );
 
     const results = users.map((user) => ({
+      id: user.id,
       name: {
         first: user.first,
         last: user.last,

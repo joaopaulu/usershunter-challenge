@@ -47,7 +47,7 @@ export class CreateUsers1688738997363 implements MigrationInterface {
           },
           {
             name: "postcode",
-            type: "integer",
+            type: "varchar",
           },
         ],
       })
