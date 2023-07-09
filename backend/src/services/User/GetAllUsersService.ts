@@ -32,4 +32,12 @@ export class GetAllUsersService {
     const users = await userRepository.find(options);
     return users;
   }
+
+  async getTotalElements(): Promise<number> {
+    const userRepository = getRepository(User);
+
+    const totalElements = await userRepository.count();
+
+    return totalElements;
+  }
 }

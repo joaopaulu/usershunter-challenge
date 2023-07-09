@@ -14,12 +14,17 @@ export class GetAllUsersController {
     const userService = new GetAllUsersService();
 
     const users: User[] = await userService.execute(
-      +page,
+      +page + 1, // Adicione +1 para ajustar a página atual
       +limit,
       first,
       last,
       state
     );
+
+    const totalElements = await userService.getTotalElements();
+    const totalPages = Math.ceil(totalElements / +limit);
+    const currentPage = +page;
+    const isFirstPage = currentPage === 0;
 
     const results = users.map((user) => ({
       id: user.id,
@@ -44,6 +49,10 @@ export class GetAllUsersController {
 
     const responseObj = {
       results,
+      totalPages,
+      totalElements,
+      currentPage,
+      first: isFirstPage,
     };
 
     return response.json(responseObj);
