@@ -39,14 +39,41 @@ const UserDetails = () => {
         </Link>
         <div className="user-details-info">
           {user && (
-            <div className="user-details-card text-center">
-              <h1>{user.name.first}</h1>
-              <img
-                className="user-details-image"
-                src={user.picture.large}
-                alt={user.name.first}
-              />
-            </div>
+            <>
+              <section className="section about-section gray-bg" id="about">
+                <div className="container">
+                  <div className="row align-items-center flex-row-reverse">
+                    <div className="col-lg-6 user-details-texts">
+                      <h2>
+                        {user.name.first} {user.name.last}
+                      </h2>
+                      <p>E-mail:{user.email}</p>
+                      <ul className="icon-list">
+                        <li className="text-muted">Telefone: ({user.phone})</li>
+                        <li className="text-muted">
+                          CEP: ({user.location.postcode})
+                        </li>
+                        <li className="text-muted">
+                          Estado: ({user.location.state})
+                        </li>
+                        <li className="text-muted">
+                          Cidade: ({user.location.city})
+                        </li>
+                        <li className="text-muted">
+                          Rua: ({user.location.street.name})
+                        </li>
+                      </ul>
+                    </div>
+
+                    <div className="col-lg-6">
+                      <div className="user-details-image">
+                        <img src={user.picture.large} alt={user.name.first} />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+            </>
           )}
         </div>
       </div>

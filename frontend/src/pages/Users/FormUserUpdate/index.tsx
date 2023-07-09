@@ -26,9 +26,6 @@ const FormUserUpdate = () => {
     if (isEditing) {
       requestBackend({ url: `/users/${userId}` }).then(response => {
         const user = response.data as UserList;
-
-        console.log(response.data);
-
         setValue('first', user.name.first);
         setValue('last', user.name.last);
         setValue('email', user.email);

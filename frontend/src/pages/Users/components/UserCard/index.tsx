@@ -32,43 +32,61 @@ const UserCard = ({ user, onDelete }: UserCardProps) => {
   };
 
   return (
-    <div className="row card-base border-radius-10 user-card ">
-      <div className="col-2 image-info">
+    <>
+      <div className="d-flex text-muted pt-2">
         <img
           src={user.picture.large}
           alt={user.name.first}
-          className="user-card-image"
+          className="bd-placeholder-img flex-shrink-0 me-2 rounded"
+          width="32"
+          height="32"
         />
-      </div>
-      <div className="col-5 user-info">
-        <h6 className="user-name">
-          {user.name.first} {user.name.last}
-        </h6>
-        <h6 className="user-infos">Email: {user.email} </h6>
-        <h6 className="user-infos">Estado: {user.location.state} </h6>
-      </div>
-      <div className="col-3">
-        <div className="crud-card-buttons-container">
-          <Link to={`/users/details/${user.id}`} key={user.id}>
-            <button className="btn btn-outline-primary crud-card-button">
-              DETALHAR
-            </button>
-          </Link>
 
-          <Link to={`/users/${user.id}`}>
-            <button className="btn btn-outline-secondary crud-card-button">
-              EDITAR
-            </button>
-          </Link>
-          <button
-            onClick={() => handleDelete(user.id)}
-            className="btn btn-outline-danger crud-card-button crud-card-button-first"
-          >
-            EXCLUIR
-          </button>
+        <div className="pb-1 mb-0 small lh-sm border-bottom w-100">
+          <div className="d-flex justify-content-between">
+            <strong className="text-gray-dark">
+              {user.name.first} {user.name.last}
+            </strong>
+            <div className="btn-group">
+              <div className="row">
+                <div className="col mx-2">
+                  <Link to={`/users/details/${user.id}`} key={user.id}>
+                    <button
+                      type="button"
+                      className="btn btn-sm btn-outline-primary"
+                    >
+                      Detalhes
+                    </button>
+                  </Link>
+                </div>
+                <div className="col mx-2">
+                  <Link to={`/users/${user.id}`}>
+                    <button
+                      type="button"
+                      className="btn btn-sm btn-outline-secondary"
+                    >
+                      Editar
+                    </button>
+                  </Link>
+                </div>
+                <div className="col mx-2">
+                  <button
+                    onClick={() => handleDelete(user.id)}
+                    type="button"
+                    className="btn btn-sm btn-outline-danger"
+                  >
+                    Excluir
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <span className="d-block user-text">
+            {user.email} - {user.location.state}
+          </span>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

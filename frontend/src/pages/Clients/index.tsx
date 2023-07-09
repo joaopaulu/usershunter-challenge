@@ -3,6 +3,7 @@ import Pagination from 'core/components/Pagination';
 import makeRequest from 'core/utils/request';
 import { Client, ClientsResponse } from 'core/utils/types/client';
 import { useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
 import ClientCard from './components/ClientCard';
 import Form from './components/Form';
 import ClientCardLoader from './components/Loaders/ClientCardLoader';
@@ -33,7 +34,7 @@ const Clients = () => {
         });
         setClientsData(response.data);
       } catch (error) {
-        console.log(error);
+        toast.error('Erro ao cadastrar usuário');
       } finally {
         setIsLoading(false);
       }

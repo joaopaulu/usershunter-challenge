@@ -34,18 +34,21 @@
 .user-details-info{
   display: flex;
   flex-direction: row;
+  width: 55%;
+    margin: 0 auto;
 }
 
-.user-details-card{
-  width: 100%;
-  border: 1px solid #E1E1E1;
-  border-radius: 20px;
-  padding: 38px 29px;
+.user-details-texts{
+  margin-bottom: 150px;
 }
 
 .user-details-image{
   width: 353px;
   height: 353px;
+  img{
+    width: 300px;
+    border-radius: 10px;
+  }
 }
 
 .user-description-title{

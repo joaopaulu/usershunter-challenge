@@ -13,8 +13,12 @@
     }
 }
 
+.user-text{
+    margin-top: -13px;
+}
+
 .user-name {
-    font-size: 22px;
+    font-size: 16px;
     line-height: 25px;
     letter-spacing: -0.015em;
     color: #263238;
@@ -35,5 +39,5 @@
 }
 
 .image-info {
-    margin-right: 20px;
+    text-align: center;
 }

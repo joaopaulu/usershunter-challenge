@@ -41,7 +41,7 @@ const Users = () => {
       url: '/users',
       params: {
         page: controlComponentsData.activePage,
-        limit: 3,
+        limit: 6,
         first: controlComponentsData.filterData.first,
         last: controlComponentsData.filterData.last,
         state: controlComponentsData.filterData.state,
@@ -64,7 +64,8 @@ const Users = () => {
         <div className="user-crud-bar-container">
           <UserFilter onSubmitFilter={handleSubmitFilter} />
         </div>
-        <div className="row">
+        <div className="my-3 p-3 bg-body rounded shadow-sm">
+          <h6 className="border-bottom pb-2 mb-0">Minha Lista</h6>
           {isLoading ? (
             <UserCardLoader />
           ) : (
