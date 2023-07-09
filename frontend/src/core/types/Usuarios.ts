@@ -7,5 +7,5 @@ export interface Usuarios {
   street: string;
   city: string;
   state: string;
-  postcode: number;
+  postcode: string;
 }

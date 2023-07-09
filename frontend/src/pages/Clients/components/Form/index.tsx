@@ -1,7 +1,9 @@
 import { SubmitHandler, useForm } from 'react-hook-form';
+import { toast } from 'react-toastify';
 
 import { Client } from 'core/types/Client';
 import { Usuarios } from 'core/types/Usuarios';
+import { makeRequestPost } from 'core/utils/request';
 import './styles.scss';
 
 type FormProps = {
@@ -9,15 +11,30 @@ type FormProps = {
 };
 
 const Form: React.FC<FormProps> = ({ client }) => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<Usuarios>();
-  const onSubmit: SubmitHandler<Usuarios> = data => console.log(data);
+  const { register, handleSubmit } = useForm<Usuarios>();
 
-  const handleCancel = () => {
-    console.log('clean');
+  const onSubmit: SubmitHandler<Usuarios> = async data => {
+    const requestData: Usuarios = {
+      first: client?.name.first || '',
+      last: client?.name.last || '',
+      email: client?.email || '',
+      phone: client?.phone || '',
+      picture: client?.picture.large || '',
+      street: client?.location.street.name || '',
+      city: client?.location.city || '',
+      state: client?.location.state || '',
+      postcode: client?.location.postcode || '',
+    };
+
+    try {
+      await makeRequestPost({
+        url: '/users',
+        data: requestData,
+      });
+      toast.info('Usuário cadastrado com sucesso');
+    } catch (error) {
+      toast.error('Erro ao cadastrar usuário');
+    }
   };
 
   return (
@@ -29,182 +46,113 @@ const Form: React.FC<FormProps> = ({ client }) => {
           <div className="row user-crud-inputs-container">
             <div>
               <input
-                {...register('first', {
-                  required: 'Campo obrigatório',
-                })}
+                {...register('first')}
                 type="text"
-                className={`form-control base-input ${
-                  errors.first ? 'is-invalid' : ''
-                }`}
+                className="form-control base-input"
                 placeholder="Nome"
                 name="first"
-                value={client?.name.first}
+                defaultValue={client?.name.first}
               />
-              <div className="invalid-feedback d-block">
-                {errors.first?.message}
-              </div>
             </div>
           </div>
           <div className="row user-crud-inputs-container">
             <div>
               <input
-                {...register('last', {
-                  required: 'Campo obrigatório',
-                })}
+                {...register('last')}
                 type="text"
-                className={`form-control base-input ${
-                  errors.last ? 'is-invalid' : ''
-                }`}
+                className="form-control base-input"
                 placeholder="Sobrenome"
                 name="last"
-                value={client?.name.last}
+                defaultValue={client?.name.last}
               />
-              <div className="invalid-feedback d-block">
-                {errors.last?.message}
-              </div>
             </div>
           </div>
           <div className="row user-crud-inputs-container">
             <div>
               <input
-                {...register('email', {
-                  required: 'Campo obrigatório',
-                })}
+                {...register('email')}
                 type="email"
-                className={`form-control base-input ${
-                  errors.email ? 'is-invalid' : ''
-                }`}
+                className="form-control base-input"
                 placeholder="E-mail"
                 name="email"
-                value={client?.email}
+                defaultValue={client?.email}
               />
-              <div className="invalid-feedback d-block">
-                {errors.email?.message}
-              </div>
             </div>
           </div>
           <div className="row user-crud-inputs-container">
             <div>
               <input
-                {...register('phone', {
-                  required: 'Campo obrigatório',
-                })}
+                {...register('phone')}
                 type="phone"
-                className={`form-control base-input ${
-                  errors.phone ? 'is-invalid' : ''
-                }`}
+                className="form-control base-input"
                 placeholder="Telefone"
-                name="text"
-                value={client?.phone}
+                name="phone"
+                defaultValue={client?.phone}
               />
-              <div className="invalid-feedback d-block">
-                {errors.phone?.message}
-              </div>
             </div>
           </div>
           <div className="row user-crud-inputs-container">
             <div>
               <input
-                {...register('picture', {
-                  required: 'Campo obrigatório',
-                })}
+                {...register('picture')}
                 type="text"
-                className={`form-control base-input ${
-                  errors.picture ? 'is-invalid' : ''
-                }`}
+                className="form-control base-input"
                 placeholder="URL da Foto"
                 name="picture"
-                value={client?.picture.large}
+                defaultValue={client?.picture.large}
               />
-              <div className="invalid-feedback d-block">
-                {errors.picture?.message}
-              </div>
             </div>
           </div>
           <div className="row user-crud-inputs-container">
             <div>
               <input
-                {...register('postcode', {
-                  required: 'Campo obrigatório',
-                })}
+                {...register('postcode')}
                 type="text"
-                className={`form-control base-input ${
-                  errors.postcode ? 'is-invalid' : ''
-                }`}
+                className="form-control base-input"
                 placeholder="CEP"
                 name="postcode"
-                value={client?.location.postcode}
+                defaultValue={client?.location.postcode}
               />
-              <div className="invalid-feedback d-block">
-                {errors.postcode?.message}
-              </div>
             </div>
           </div>
           <div className="row user-crud-inputs-container">
             <div>
               <input
-                {...register('city', {
-                  required: 'Campo obrigatório',
-                })}
+                {...register('city')}
                 type="text"
-                className={`form-control base-input ${
-                  errors.city ? 'is-invalid' : ''
-                }`}
-                placeholder="CEP"
+                className="form-control base-input"
+                placeholder="Cidade"
                 name="city"
-                value={client?.location.city}
+                defaultValue={client?.location.city}
               />
-              <div className="invalid-feedback d-block">
-                {errors.city?.message}
-              </div>
             </div>
           </div>
           <div className="row user-crud-inputs-container">
             <div>
               <input
-                {...register('state', {
-                  required: 'Campo obrigatório',
-                })}
+                {...register('state')}
                 type="text"
-                className={`form-control base-input ${
-                  errors.state ? 'is-invalid' : ''
-                }`}
-                placeholder="CEP"
+                className="form-control base-input"
+                placeholder="Estado"
                 name="state"
-                value={client?.location.state}
+                defaultValue={client?.location.state}
               />
-              <div className="invalid-feedback d-block">
-                {errors.state?.message}
-              </div>
             </div>
           </div>
           <div className="row user-crud-inputs-container">
             <div>
               <input
-                {...register('street', {
-                  required: 'Campo obrigatório',
-                })}
+                {...register('street')}
                 type="text"
-                className={`form-control base-input ${
-                  errors.street ? 'is-invalid' : ''
-                }`}
-                placeholder="CEP"
-                name="state"
-                value={client?.location.street.name}
+                className="form-control base-input"
+                placeholder="Rua"
+                name="street"
+                defaultValue={client?.location.street.name}
               />
-              <div className="invalid-feedback d-block">
-                {errors.street?.message}
-              </div>
             </div>
           </div>
 
           <div className="user-crud-buttons-container">
-            <button
-              className="btn btn-outline-danger user-crud-button"
-              onClick={handleCancel}
-            >
-              CANCELAR
-            </button>
             <button className="btn btn-primary user-crud-button text-white">
               SALVAR
             </button>

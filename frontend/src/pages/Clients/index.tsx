@@ -18,7 +18,7 @@ const Clients = () => {
     setSelectedClient(client);
     // Faça o que você precisa com as informações do cliente
     // Por exemplo, atualizar o estado no componente `Clients`
-    console.log('Informações do cliente:', client);
+    // console.log('Informações do cliente:', client);
   };
 
   useEffect(() => {
@@ -32,7 +32,6 @@ const Clients = () => {
           url: '/randomusers',
           params,
         });
-        console.log();
         setClientsData(response.data);
       } catch (error) {
         console.log(error);
