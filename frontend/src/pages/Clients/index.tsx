@@ -1,7 +1,7 @@
 import Footer from 'core/components/Footer';
 import Pagination from 'core/components/Pagination';
-import { Client, ClientsResponse } from 'core/types/Client';
 import makeRequest from 'core/utils/request';
+import { Client, ClientsResponse } from 'core/utils/types/Client';
 import { useEffect, useState } from 'react';
 import ClientCard from './components/ClientCard';
 import Form from './components/Form';
@@ -13,12 +13,11 @@ const Clients = () => {
   const [selectedClient, setSelectedClient] = useState<Client | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [activePage, setActivePage] = useState(0);
+  const [isFormEnabled, setisFormEnabled] = useState(false);
 
   const handleCardButtonClick = (client: Client) => {
     setSelectedClient(client);
-    // Faça o que você precisa com as informações do cliente
-    // Por exemplo, atualizar o estado no componente `Clients`
-    // console.log('Informações do cliente:', client);
+    setisFormEnabled(true);
   };
 
   useEffect(() => {
@@ -47,8 +46,8 @@ const Clients = () => {
     <>
       <div className="main-container">
         <div className="client-container half-width">
-          <h1 className="client-title">Usuários Aleatórios</h1>
-          <div className="client-products">
+          <h1 className="client-title">Escolher Usuário</h1>
+          <div className="client-body">
             {isLoading ? (
               <ClientCardLoader />
             ) : (
@@ -69,8 +68,8 @@ const Clients = () => {
           )}
         </div>
         <hr />
-        <div className="half-width">
-          <Form client={selectedClient} />
+        <div className="half-width client-container">
+          <Form client={selectedClient} isFormEnabled={isFormEnabled} />
         </div>
       </div>
       <Footer />

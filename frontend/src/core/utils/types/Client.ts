@@ -4,13 +4,13 @@ export interface ClientsResponse {
 }
 
 export interface Client {
-  gender: string;
   name: Name;
   location: Location;
   email: string;
-  dob: Dob;
   phone: string;
-  picture: Picture;
+  picture: {
+    large: string;
+  };
 }
 
 export interface Name {
@@ -27,12 +27,4 @@ export interface Location {
   street: {
     name: string;
   };
-}
-
-export interface Dob {
-  age: number;
-}
-
-export interface Picture {
-  large: string;
 }

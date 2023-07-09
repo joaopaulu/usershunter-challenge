@@ -6,7 +6,7 @@ const PageHeader = () => {
     <header className="page-header">
       <div className="top-bar-container">
         <Link to="/" className="nav-logo-text">
-          <h2>Hunter Users</h2>
+          <h2>Users Hunter</h2>
         </Link>
         <ul className="main-menu">
           <li>

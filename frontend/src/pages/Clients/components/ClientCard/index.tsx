@@ -1,4 +1,4 @@
-import { Client } from 'core/types/Client';
+import { Client } from 'core/utils/types/Client';
 import './styles.scss';
 
 type ClientCardProps = {
@@ -11,7 +11,6 @@ const ClientCard: React.FC<ClientCardProps> = ({
   onCardButtonClick,
 }) => {
   const handleButtonClick = () => {
-    // Chame a função de callback com as informações do cliente
     onCardButtonClick(client);
   };
 
@@ -29,11 +28,6 @@ const ClientCard: React.FC<ClientCardProps> = ({
           {client.name.first} {client.name.last}
         </h6>
         <h6 className="client-infos">Email: {client.email} </h6>
-        <h6 className="client-infos">
-          Endereço: {client.location.city}, {client.location.state},{' '}
-          {client.location.country}{' '}
-        </h6>
-        <h6 className="client-infos">Telefone: {client.phone}</h6>
       </div>
       <div className="col-2 client-info">
         <button onClick={handleButtonClick} className="btn btn-primary">

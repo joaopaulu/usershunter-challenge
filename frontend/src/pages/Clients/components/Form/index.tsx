@@ -1,16 +1,17 @@
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 
-import { Client } from 'core/types/Client';
-import { Usuarios } from 'core/types/Usuarios';
 import { makeRequestPost } from 'core/utils/request';
+import { Client } from 'core/utils/types/Client';
+import { Usuarios } from 'core/utils/types/Usuarios';
 import './styles.scss';
 
 type FormProps = {
   client: Client | null;
+  isFormEnabled: boolean;
 };
 
-const Form: React.FC<FormProps> = ({ client }) => {
+const Form: React.FC<FormProps> = ({ client, isFormEnabled }) => {
   const { register, handleSubmit } = useForm<Usuarios>();
 
   const onSubmit: SubmitHandler<Usuarios> = async data => {
@@ -52,6 +53,7 @@ const Form: React.FC<FormProps> = ({ client }) => {
                 placeholder="Nome"
                 name="first"
                 defaultValue={client?.name.first}
+                disabled={!isFormEnabled}
               />
             </div>
           </div>
@@ -64,6 +66,7 @@ const Form: React.FC<FormProps> = ({ client }) => {
                 placeholder="Sobrenome"
                 name="last"
                 defaultValue={client?.name.last}
+                disabled={!isFormEnabled}
               />
             </div>
           </div>
@@ -76,6 +79,7 @@ const Form: React.FC<FormProps> = ({ client }) => {
                 placeholder="E-mail"
                 name="email"
                 defaultValue={client?.email}
+                disabled={!isFormEnabled}
               />
             </div>
           </div>
@@ -88,6 +92,7 @@ const Form: React.FC<FormProps> = ({ client }) => {
                 placeholder="Telefone"
                 name="phone"
                 defaultValue={client?.phone}
+                disabled={!isFormEnabled}
               />
             </div>
           </div>
@@ -100,6 +105,7 @@ const Form: React.FC<FormProps> = ({ client }) => {
                 placeholder="URL da Foto"
                 name="picture"
                 defaultValue={client?.picture.large}
+                disabled={!isFormEnabled}
               />
             </div>
           </div>
@@ -112,6 +118,7 @@ const Form: React.FC<FormProps> = ({ client }) => {
                 placeholder="CEP"
                 name="postcode"
                 defaultValue={client?.location.postcode}
+                disabled={!isFormEnabled}
               />
             </div>
           </div>
@@ -124,6 +131,7 @@ const Form: React.FC<FormProps> = ({ client }) => {
                 placeholder="Cidade"
                 name="city"
                 defaultValue={client?.location.city}
+                disabled={!isFormEnabled}
               />
             </div>
           </div>
@@ -136,6 +144,7 @@ const Form: React.FC<FormProps> = ({ client }) => {
                 placeholder="Estado"
                 name="state"
                 defaultValue={client?.location.state}
+                disabled={!isFormEnabled}
               />
             </div>
           </div>
@@ -148,12 +157,16 @@ const Form: React.FC<FormProps> = ({ client }) => {
                 placeholder="Rua"
                 name="street"
                 defaultValue={client?.location.street.name}
+                disabled={!isFormEnabled}
               />
             </div>
           </div>
 
           <div className="user-crud-buttons-container">
-            <button className="btn btn-primary user-crud-button text-white">
+            <button
+              className="btn btn-primary user-crud-button text-white"
+              disabled={!isFormEnabled}
+            >
               SALVAR
             </button>
           </div>
