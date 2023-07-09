@@ -14,7 +14,7 @@ export class GetAllUsersController {
     const userService = new GetAllUsersService();
 
     const users: User[] = await userService.execute(
-      +page + 1, // Adicione +1 para ajustar a página atual
+      +page + 1,
       +limit,
       first,
       last,
