@@ -7,7 +7,7 @@ type RequestParams = {
   params?: object;
 };
 
-const BASE_URL = 'http://localhost:4000';
+const BASE_URL = 'http://191.252.186.229:3001';
 
 const makeRequest = ({ method = 'GET', url, data, params }: RequestParams) => {
   return axios({
