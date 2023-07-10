@@ -5,7 +5,7 @@ export const configureSwagger = (router: Router): void => {
   const swaggerDocument = {
     openapi: "3.0.0",
     info: {
-      title: "API do Desafio Random Users",
+      title: "API do Desafio Users Hunter",
       version: "1.0.0",
       description:
         "API Node.js, consumindo a API Externa randomuser e um CRUD de usuários",
