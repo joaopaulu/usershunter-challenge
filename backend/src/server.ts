@@ -10,7 +10,7 @@ import { routes } from "./routes";
 const app = express();
 
 const corsOptions = {
-  origin: "http://localhost:3000",
+  origin: "http://191.252.186.229/:3000",
   credentials: true,
 };
 
