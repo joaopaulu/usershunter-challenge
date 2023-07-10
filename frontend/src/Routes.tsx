@@ -17,7 +17,7 @@ const AppRoutes = () => (
 );
 
 const RoutesComponent = () => (
-  <BrowserRouter>
+  <BrowserRouter basename={process.env.PUBLIC_URL}>
     <PageHeader />
     <AppRoutes />
   </BrowserRouter>
