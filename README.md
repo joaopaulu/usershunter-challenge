@@ -1,7 +1,6 @@
 # Users Hunter 📑
 
 <div style="width:80%; margin:0 auto;">
-<img src="./.github/users_hunter.png" alt="Home"/>
 <img src="./.github/users_hunter_lista.png" alt="Home"/>
 </div>
 <p align="center">
@@ -32,7 +31,7 @@ Este projeto é um desafio de Desenvolvimento FullStack utilizando as tecnologia
 - PostgreSQL
 
 API Endpoints
-Para fazer as requisições HTTP abaixo, foi utilizada a ferramenta <a href="https://insomnia.rest/download">Insomnia</a>:
+Para fazer as requisições HTTP abaixo, foi utilizada a ferramenta <a href="https://insomnia.rest/download" target="_blank">Insomnia</a>:
 
 <div style="width:80%; margin:0 auto;">
 <img src="./.github/users_hunter_swagger.png" alt="Home"/>
@@ -40,6 +39,6 @@ Para fazer as requisições HTTP abaixo, foi utilizada a ferramenta <a href="htt
 
 ### Acessos
 
-Link do APP:<a href="http://191.252.186.229:8080/usershunter"> Acesse Aqui </a>
+Link do APP:<a href="http://191.252.186.229:8080/usershunter" target="_blank"> Acesse Aqui </a>
 
-Link do Documentação Swagger:<a href="http://191.252.186.229:3001/api-docs/"> Acesse Aqui </a>
+Link do Documentação Swagger:<a href="http://191.252.186.229:3001/api-docs/" target="_blank"> Acesse Aqui </a>
