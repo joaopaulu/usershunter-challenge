@@ -10,7 +10,7 @@ import { routes } from "./routes";
 const app = express();
 
 const corsOptions = {
-  origin: "http://191.252.186.229/:3000",
+  origin: "http://191.252.186.229/:8080",
   credentials: true,
 };
 
@@ -20,4 +20,4 @@ app.use(express.json());
 
 app.use(routes);
 
-app.listen(4000, () => console.log("Server is running"));
+app.listen(3001, () => console.log("Server is running"));
