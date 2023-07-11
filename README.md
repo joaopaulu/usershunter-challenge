@@ -37,8 +37,3 @@ Para fazer as requisições HTTP abaixo, foi utilizada a ferramenta <a href="htt
 <img src="./.github/users_hunter_swagger.png" alt="Home"/>
 </div>
 
-### Acessos
-
-Link do APP:<a href="http://191.252.186.229:8080/usershunter" target="_blank"> Acesse Aqui </a>
-
-Link do Documentação Swagger:<a href="http://191.252.186.229:3001/api-docs/" target="_blank"> Acesse Aqui </a>
